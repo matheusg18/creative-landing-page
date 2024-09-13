@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+
+import logo from '../assets/desktop/logo.svg';
+import hamburgerIcon from '../assets/mobile/icon-hamburger.svg';
+import cross from '../assets/mobile/icon-cross.svg';
+
+import Button from './Button.astro';
+---
+
+<header class="w-full">
+  <nav class="w-full">
+    <div class="relative z-20 flex items-center justify-between bg-white px-6 py-10">
+      <div>
+        <a href="/">
+          <Image src={logo} alt="c creative logo" />
+        </a>
+      </div>
+
+      <button id="mobile-menu-button" type="button" class="md:hidden">
+        <Image id="open-menu-icon" src={hamburgerIcon} alt="Open menu icon" />
+        <Image id="close-menu-icon" src={cross} alt="Close menu icon" class="hidden" />
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="absolute left-1/4 top-[110px] z-10 hidden w-fit bg-[#191921]">
+      <ul class="flex flex-col items-center gap-[26px] p-7">
+        <li>
+          <a href="#" class="text-base text-white">About</a>
+        </li>
+        <li>
+          <a href="#" class="text-base text-white">Service</a>
+        </li>
+        <li>
+          <a href="#" class="text-base text-white">Projects</a>
+        </li>
+        <li>
+          <Button color="red"> Schedule a call </Button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.querySelector('#mobile-menu-button');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    const mobileMenu = document.querySelector('#mobile-menu');
+    const openMenuIcon = document.querySelector('#open-menu-icon');
+    const closeMenuIcon = document.querySelector('#close-menu-icon');
+
+    mobileMenu?.classList.toggle('hidden');
+    openMenuIcon?.classList.toggle('hidden');
+    closeMenuIcon?.classList.toggle('hidden');
+  });
+</script>
+
+<style>
+  #mobile-menu {
+    animation: menu-fade-in 500ms ease 0s 1 normal forwards;
+  }
+
+  @keyframes menu-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
