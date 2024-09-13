@@ -1,0 +1,23 @@
+---
+type ButtonColor = 'red' | 'black' | 'transparent';
+
+interface Props {
+  color: ButtonColor;
+}
+
+const { color } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={[
+    'px-9 py-6 text-base font-extrabold',
+    color === 'red' && 'bg-[#f94f4f] text-white',
+    color === 'black' && 'bg-[#191921] text-white',
+    color === 'transparent' && 'bg-transparent',
+  ]}
+>
+  <span>
+    <slot />
+  </span>
+</button>
