@@ -8,6 +8,9 @@ export default {
       fontFamily: {
         sans: ['Commissioner', ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        18: '4.5rem',
+      },
     },
   },
   plugins: [],
