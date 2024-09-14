@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+import heroImg from '../assets/mobile/image-hero.jpg';
+
+import Button from './Button.astro';
+---
+
+<section>
+  <Image
+    src={heroImg}
+    alt="Two men, seated at a desk in a modern office, are focused on their work. One man uses a laptop, while the other works on a desktop computer. The office has a minimalist feel, with a plant and a small toy adding a touch of personality to the workspace."
+    class="w-full h-auto"
+  />
+
+  <div class="mb-24 mt-14 px-6 text-start">
+    <h1 class="mb-7 text-[40px] font-extrabold leading-none">Branding & website design agency</h1>
+
+    <p class="mb-10 text-[15px] font-normal leading-relaxed">
+      We specialize in visual storytelling by creating cohesive brand and website design solutions for small businesses,
+      giving lasting impressions to audiences in a digital world.
+    </p>
+
+    <Button color="red">Learn more</Button>
+  </div>
+</section>
