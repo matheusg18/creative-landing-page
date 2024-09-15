@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+
+import slideImg1 from '../assets/mobile/image-slide-1.jpg';
+import slideImg2 from '../assets/mobile/image-slide-2.jpg';
+import slideImg3 from '../assets/mobile/image-slide-3.jpg';
+import arrowNextIcon from '../assets/desktop/icon-arrow-next.svg';
+import arrowPrevIcon from '../assets/desktop/icon-arrow-previous.svg';
+---
+
+<section id="projects">
+  <creative-slider data-image1={slideImg1.src} data-image2={slideImg2.src} data-image3={slideImg3.src}>
+    <div class="relative">
+      <Image
+        id="creative-slider-image"
+        src={slideImg1}
+        alt="Diagram showing a product development cycle with phases like Measure, Product, Build, Growth, and Validate. Text discusses Minimum Viable Product (MVP) and Minimum Desirable Product (MDP)"
+        class="h-auto w-full"
+      />
+
+      <div class="absolute bottom-0 left-0 h-28 w-full bg-gradient-to-b from-transparent to-[#000000d9]">
+        <div class="absolute bottom-9 right-8 text-end">
+          <h3 id="creative-slider-title" class="text-[15px] font-extrabold leading-snug text-white">
+            Lean Product Roadmap
+          </h3>
+          <p id="creative-slider-subtitle" class="text-[15px] font-normal leading-snug text-white">2019 Project</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#191921] px-6 py-16 text-start">
+      <h2 id="creative-slider-heading" class="text-[32px] font-extrabold leading-tight text-white">
+        Brand naming & guidelines
+      </h2>
+
+      <div class="mt-6 flex gap-4">
+        <button id="prev" type="button" class="outline-none">
+          <Image src={arrowPrevIcon} alt="Previous" class="h-10 w-10" />
+        </button>
+
+        <button id="next" type="button" class="outline-none">
+          <Image src={arrowNextIcon} alt="Next" class="h-10 w-10" />
+        </button>
+      </div>
+    </div>
+  </creative-slider>
+</section>
+
+<script src="../scripts/web-components/CreativeSlider.ts"></script>
