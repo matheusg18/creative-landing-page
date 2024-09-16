@@ -1,20 +1,22 @@
 ---
-type ButtonColor = 'red' | 'black' | 'transparent';
+type ButtonVariant = 'red' | 'black' | 'transparent' | 'header';
 
 interface Props {
-  color: ButtonColor;
+  variant: ButtonVariant;
 }
 
-const { color } = Astro.props;
+const { variant } = Astro.props;
 ---
 
 <button
   type="button"
   class:list={[
     'font-extrabold leading-none outline-none',
-    color === 'red' && 'bg-[#f94f4f] px-10 py-6 text-[18px] text-white',
-    color === 'black' && 'bg-[#191921] px-10 py-6 text-[18px] text-white',
-    color === 'transparent' && 'border-b-2 border-[#f94f4f] bg-transparent pb-2 text-[15px] text-[#f94f4f]',
+    variant === 'red' && 'bg-[#f94f4f] px-10 py-6 text-[18px] text-white',
+    variant === 'black' && 'bg-[#191921] px-10 py-6 text-[18px] text-white',
+    variant === 'transparent' && 'border-b-2 border-[#f94f4f] bg-transparent pb-2 text-[15px] text-[#f94f4f]',
+    variant === 'header' &&
+      'bg-[#f94f4f] px-10 py-6 text-[18px] text-white md:ml-2 md:bg-[#191921] md:px-5 md:text-[16px] md:hover:bg-[#434356] lg:px-11',
   ]}
 >
   <span>
