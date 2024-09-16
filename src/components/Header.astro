@@ -8,9 +8,11 @@ import crossIcon from '../assets/mobile/icon-cross.svg';
 import Button from './Button.astro';
 ---
 
-<header class="w-full">
-  <nav class="w-full">
-    <div class="relative z-20 flex items-center justify-between bg-white px-6 py-10">
+<header class="w-full md:h-[178px]">
+  <nav class="w-full md:flex md:h-full">
+    <div
+      class="lg:pl-41 relative z-20 flex items-center justify-between bg-white px-6 py-10 md:static md:grow md:justify-center lg:grow-[2] lg:justify-start xl:grow"
+    >
       <div>
         <a href="/">
           <Image src={logoImg} alt="creative logo" />
@@ -23,19 +25,45 @@ import Button from './Button.astro';
       </button>
     </div>
 
-    <div id="mobile-menu" class="absolute left-1/4 top-[110px] z-10 hidden w-fit bg-[#191921]">
-      <ul class="flex flex-col items-center gap-8 p-7">
+    <div
+      id="mobile-menu"
+      class="absolute left-1/4 top-[110px] z-10 hidden w-fit bg-[#191921] md:static md:block md:w-auto md:max-w-[705px] md:bg-[#f94f4f] lg:grow 2xl:max-w-[855px]"
+    >
+      <ul
+        class="xl:pr-41 flex flex-col items-center gap-8 p-7 md:flex-row md:justify-between md:gap-5 md:py-14 md:pl-8 md:pr-10 xl:pl-16"
+      >
         <li>
-          <a href="#about" class="text-[18px] font-normal leading-none text-white">About</a>
+          <a
+            href="#about"
+            data-text="About"
+            class="text-[18px] font-normal leading-none text-white md:text-[15px] lg:text-[16px]"
+          >
+            About
+          </a>
         </li>
+
         <li>
-          <a href="#service" class="text-[18px] font-normal leading-none text-white">Service</a>
+          <a
+            href="#service"
+            data-text="Service"
+            class="text-[18px] font-normal leading-none text-white md:text-[15px] lg:text-[16px]"
+          >
+            Service
+          </a>
         </li>
+
         <li>
-          <a href="#projects" class="text-[18px] font-normal leading-none text-white">Projects</a>
+          <a
+            href="#projects"
+            data-text="Projects"
+            class="text-[18px] font-normal leading-none text-white md:text-[15px] lg:text-[16px]"
+          >
+            Projects
+          </a>
         </li>
+
         <li>
-          <Button color="red">Schedule a call</Button>
+          <Button variant="header">Schedule a call</Button>
         </li>
       </ul>
     </div>
@@ -44,21 +72,45 @@ import Button from './Button.astro';
 
 <script>
   const mobileMenuButton = document.querySelector('#mobile-menu-button');
+  const mobileMenu = document.querySelector('#mobile-menu');
+  const openMenuIcon = document.querySelector('#open-menu-icon');
+  const closeMenuIcon = document.querySelector('#close-menu-icon');
 
-  mobileMenuButton?.addEventListener('click', () => {
-    const mobileMenu = document.querySelector('#mobile-menu');
-    const openMenuIcon = document.querySelector('#open-menu-icon');
-    const closeMenuIcon = document.querySelector('#close-menu-icon');
+  mobileMenuButton?.addEventListener('click', toggleAll);
 
+  function toggleAll() {
     mobileMenu?.classList.toggle('hidden');
     openMenuIcon?.classList.toggle('hidden');
     closeMenuIcon?.classList.toggle('hidden');
+  }
+
+  window.addEventListener('resize', () => {
+    const MD_BREAKPOINT = 768;
+    if (window.innerWidth > MD_BREAKPOINT) resetMobileMenu();
+  });
+
+  function resetMobileMenu() {
+    mobileMenu?.classList.add('hidden');
+    openMenuIcon?.classList.remove('hidden');
+    closeMenuIcon?.classList.add('hidden');
+  }
+
+  document.querySelectorAll('#mobile-menu ul li a').forEach((link) => {
+    link.addEventListener('click', resetMobileMenu);
   });
 </script>
 
 <style>
   #mobile-menu {
     animation: menu-fade-in 500ms ease 0s 1 normal forwards;
+  }
+
+  #mobile-menu ul li a:hover {
+    text-shadow:
+      0 0 1px white,
+      0 0 1px white,
+      0 0 1px white,
+      0 0 1px white;
   }
 
   @keyframes menu-fade-in {
