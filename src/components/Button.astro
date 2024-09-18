@@ -11,8 +11,8 @@ const { variant } = Astro.props;
 <button
   type="button"
   class:list={[
-    'font-extrabold leading-none outline-none',
-    variant === 'red' && 'bg-[#f94f4f] px-10 py-6 text-[18px] text-white',
+    'font-extrabold leading-none outline-none hover:transition-colors',
+    variant === 'red' && 'bg-[#f94f4f] px-10 py-6 text-[18px] text-white hover:bg-[#ff9393]',
     variant === 'black' && 'bg-[#191921] px-10 py-6 text-[18px] text-white',
     variant === 'transparent' && 'border-b-2 border-[#f94f4f] bg-transparent pb-2 text-[15px] text-[#f94f4f]',
     variant === 'header' &&
