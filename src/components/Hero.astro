@@ -1,22 +1,37 @@
 ---
-import { Image } from 'astro:assets';
-
-import heroImg from '../assets/mobile/image-hero.jpg';
+import mobileHeroImg from '../assets/mobile/image-hero.jpg';
+import tabletHeroImg from '../assets/tablet/image-hero.jpg';
+import desktopHeroImg from '../assets/desktop/image-hero.jpg';
 
 import Button from './Button.astro';
 ---
 
-<section>
-  <Image
-    src={heroImg}
-    alt="Two men, seated at a desk in a modern office, are focused on their work. One man uses a laptop, while the other works on a desktop computer. The office has a minimalist feel, with a plant and a small toy adding a touch of personality to the workspace."
-    class="w-full h-auto"
-  />
+<section class="w-full md:relative md:flex md:justify-end">
+  <picture>
+    <source media="(min-width: 1440px)" srcset={desktopHeroImg.src} height={desktopHeroImg.height} />
 
-  <div class="mb-24 mt-14 px-6 text-start">
-    <h1 class="mb-7 text-[40px] font-extrabold leading-none">Branding & website design agency</h1>
+    <source media="(min-width: 768px)" srcset={tabletHeroImg.src} height={tabletHeroImg.height} />
 
-    <p class="mb-10 text-[15px] font-normal leading-relaxed">
+    <source media="(max-width: 767px)" srcset={mobileHeroImg.src} height={mobileHeroImg.height} />
+
+    <img
+      src={desktopHeroImg.src}
+      alt="Two men, seated at a desk in a modern office, are focused on their work. One man uses a laptop, while the other works on a desktop computer. The office has a minimalist feel, with a plant and a small toy adding a touch of personality to the workspace."
+      height={desktopHeroImg.height}
+      class="h-auto w-full md:w-auto"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
+
+  <div
+    class="mb-24 mt-14 px-6 text-start md:absolute md:left-10 md:top-20 md:m-0 md:max-w-[400px] md:p-0 xl:left-32 xl:top-28 xl:max-w-[550px]"
+  >
+    <h1 class="mb-7 text-[40px] font-extrabold leading-none md:text-[56px] xl:text-[80px] xl:leading-[88px]">
+      Branding & website design agency
+    </h1>
+
+    <p class="mb-10 text-[15px] font-normal leading-relaxed xl:text-[18px] xl:leading-[32px]">
       We specialize in visual storytelling by creating cohesive brand and website design solutions for small businesses,
       giving lasting impressions to audiences in a digital world.
     </p>
